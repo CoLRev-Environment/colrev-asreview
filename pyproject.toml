@@ -4,7 +4,6 @@ version = "0.1.0"
 description = ""
 authors = ["Gerit Wagner <gerit.wagner@uni-bamberg.de>, Julian Prester <julian@julianprester.com>"]
 readme = "README.md"
-packages = [{include = "colrev_asreview"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8, <4"
