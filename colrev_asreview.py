@@ -49,7 +49,7 @@ class ASReviewPrescreen(JsonSchemaMixin):
             try:
                 # pylint: disable=import-outside-toplevel
 
-                import asreview  # noqa: F401
+                import colrev_asreview  # noqa: F401
 
                 _ = asreview
             except (ImportError, ModuleNotFoundError) as exc:
@@ -239,7 +239,7 @@ class ASReviewPrescreen(JsonSchemaMixin):
             # gh_issue https://github.com/CoLRev-Environment/colrev/issues/74
             # if not available: ask to "pip install asreview"
             # pylint: disable=import-outside-toplevel
-            from asreview.entry_points import LABEntryPoint
+            from colrev_asreview.entry_points import LABEntryPoint
 
             try:
                 asreview = LABEntryPoint()
