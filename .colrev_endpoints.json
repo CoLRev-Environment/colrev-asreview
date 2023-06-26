@@ -4,8 +4,8 @@
   "colrev_version": ">=0.6.0",
   "endpoints": {
     "prescreen": [
-      {"package_endpoint_identifier": "colrev_asreview_prescreen",
-        "endpoint": "colrev_asreview.colrev_asreview.ASReviewPrescreen"
+      {"package_endpoint_identifier": "colrev_asreview",
+        "endpoint": "colrev_asreview.ASReviewPrescreen"
       }
     ]
   }
