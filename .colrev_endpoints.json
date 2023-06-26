@@ -1,0 +1,12 @@
+{
+  "authors": "Wagner, Gerit and Prester, Julian",
+  "license": "MIT",
+  "colrev_version": ">=0.6.0",
+  "endpoints": {
+    "prescreen": [
+      {"package_endpoint_identifier": "asreview_prescreen",
+        "endpoint": "extension.asreview.ASReviewPrescreen"
+      }
+    ]
+  }
+}
