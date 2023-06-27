@@ -5,7 +5,7 @@
   "endpoints": {
     "prescreen": [
       {"package_endpoint_identifier": "colrev_asreview",
-        "endpoint": "colrev_asreview.ASReviewPrescreen"
+        "endpoint": "colrev_asreview.colrev_asreview.ASReviewPrescreen"
       }
     ]
   }
