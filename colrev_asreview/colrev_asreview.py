@@ -8,13 +8,12 @@ import typing
 from dataclasses import dataclass
 from pathlib import Path
 
-import pandas as pd
-import zope.interface
-from dataclasses_jsonschema import JsonSchemaMixin
-
 import colrev.env.package_manager
 import colrev.exceptions as colrev_exceptions
 import colrev.record
+import pandas as pd
+import zope.interface
+from dataclasses_jsonschema import JsonSchemaMixin
 
 if typing.TYPE_CHECKING:
     import colrev.ops.prescreen.Prescreen
@@ -49,7 +48,7 @@ class ASReviewPrescreen(JsonSchemaMixin):
             try:
                 # pylint: disable=import-outside-toplevel
 
-                import colrev_asreview  # noqa: F401
+                import asreview  # noqa: F401
 
                 _ = asreview
             except (ImportError, ModuleNotFoundError) as exc:
