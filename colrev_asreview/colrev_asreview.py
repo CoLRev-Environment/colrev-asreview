@@ -238,7 +238,7 @@ class ASReviewPrescreen(JsonSchemaMixin):
             # gh_issue https://github.com/CoLRev-Environment/colrev/issues/74
             # if not available: ask to "pip install asreview"
             # pylint: disable=import-outside-toplevel
-            from colrev_asreview.entry_points import LABEntryPoint
+            from asreview.entry_points import LABEntryPoint
 
             try:
                 asreview = LABEntryPoint()
