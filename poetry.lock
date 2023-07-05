@@ -604,7 +604,7 @@ watchdog = "^2.2.1"
 type = "git"
 url = "https://tmahmood@github.com/tmahmood/colrev.git"
 reference = "asreview_refactor"
-resolved_reference = "f554cfb6c50b097fcee79518533b5ad1578abb4a"
+resolved_reference = "fcce1215449aeb86ce3e9ce11918917b4fbd7c9c"
 
 [[package]]
 name = "coverage"
