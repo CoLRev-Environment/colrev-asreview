@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 """Tests for colrev-asreview"""
-
 import colrev.review_manager
 
 import colrev_asreview.colrev_asreview

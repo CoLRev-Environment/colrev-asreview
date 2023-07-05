@@ -8,6 +8,7 @@ include = [".colrev_endpoints.json"]
 
 [tool.poetry.dependencies]
 python = ">=3.8, <4"
+asreview = "^1.2"
 # TODO: change to official repo
 colrev = {git = "https://tmahmood@github.com/tmahmood/colrev.git", rev = "asreview_refactor"}
 
