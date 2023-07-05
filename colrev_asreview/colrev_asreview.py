@@ -35,6 +35,7 @@ class ASReviewPrescreen(JsonSchemaMixin):
 
     endpoint_path = Path("prescreen/asreview")
     export_filepath = endpoint_path / Path("records_to_screen.csv")
+    link = "https://github.com/CoLRev-Environment/colrev-asreview"
 
     def __init__(
         self,
