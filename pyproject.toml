@@ -11,6 +11,7 @@ python = ">=3.8, <4"
 asreview = "^1.2"
 # TODO: change to official repo
 colrev = {git = "https://tmahmood@github.com/tmahmood/colrev.git", rev = "asreview_refactor"}
+pytest = "^7.4.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.1"
