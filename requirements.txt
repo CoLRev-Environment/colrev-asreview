@@ -1,6 +1,6 @@
 colrev
-pandas
-zope
 dataclasses_jsonschema
+pandas
 pytest
 pytest-mock
+zope
