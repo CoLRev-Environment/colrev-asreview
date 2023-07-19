@@ -1,0 +1,6 @@
+colrev
+pandas
+zope
+dataclasses_jsonschema
+pytest
+pytest-mock
