@@ -4,13 +4,13 @@ version = "0.1.0"
 description = ""
 authors = ["Gerit Wagner <gerit.wagner@uni-bamberg.de>, Julian Prester <julian@julianprester.com>"]
 readme = "README.md"
-include = [".colrev_endpoints.json"]
+include = ["colrev_asreview/.colrev_endpoints.json"]
 
 [tool.poetry.dependencies]
 python = ">=3.8, <4"
 asreview = "^1.2"
 colrev = ">=0.9.0"
-# pytest = "^7.4.0"
+dataclasses-jsonschema = "^2.16.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.1"
