@@ -10,7 +10,7 @@ include = ["colrev_asreview/.colrev_endpoints.json"]
 python = ">=3.8, <4"
 asreview = "^1.2"
 colrev = ">=0.9.0"
-# pytest = "^7.4.0"
+dataclasses-jsonschema = "^2.16.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.1"
