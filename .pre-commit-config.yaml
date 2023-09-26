@@ -26,28 +26,28 @@ repos:
     -   id: name-tests-test
     -   id: requirements-txt-fixer
 -   repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 23.9.1
     hooks:
     - id: black
       language_version: python3
 -   repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
+    rev: 6.1.0
     hooks:
     -   id: flake8
         additional_dependencies: [flake8-typing-imports==1.12.0]
         args: ['--max-line-length=110', '--extend-ignore=E203,TYP006']
 -   repo: https://github.com/asottile/reorder-python-imports
-    rev: v3.10.0
+    rev: v3.11.0
     hooks:
     -   id: reorder-python-imports
         args: [--py3-plus]
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v3.9.0
+    rev: v3.13.0
     hooks:
     -   id: pyupgrade
         args: [--py36-plus, --keep-runtime-typing]
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 'v1.4.1'
+    rev: 'v1.5.1'
     hooks:
     -   id: mypy
         args: [--disallow-untyped-defs, --disallow-incomplete-defs, --disallow-untyped-calls]
