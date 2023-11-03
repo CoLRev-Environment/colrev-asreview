@@ -44,6 +44,8 @@ class ASReviewPrescreen(JsonSchemaMixin):
         settings: dict,
     ) -> None:
         self.settings = self.settings_class.load_settings(data=settings)
+        self.prescreen_operation = prescreen_operation
+        self.review_manager = prescreen_operation.review_manager
 
         if not prescreen_operation.review_manager.in_ci_environment():
             try:
@@ -60,13 +62,12 @@ class ASReviewPrescreen(JsonSchemaMixin):
 
     def __export_for_asreview(
         self,
-        prescreen: colrev.ops.prescreen.Prescreen,
         records: dict,
         split: list,  # pylint: disable=unused-argument
     ) -> None:
         self.endpoint_path.mkdir(exist_ok=True, parents=True)
 
-        prescreen.review_manager.logger.info("Export: asreview")
+        self.review_manager.logger.info("Export: asreview")
 
         # gh_issue https://github.com/CoLRev-Environment/colrev/issues/74
         # tbd. whether the selection is necessary
@@ -95,9 +96,7 @@ class ASReviewPrescreen(JsonSchemaMixin):
         to_screen_df = pd.DataFrame.from_dict(records)
         to_screen_df.to_csv(self.export_filepath, quoting=csv.QUOTE_NONNUMERIC)
 
-    def __import_from_asreview(
-        self, prescreen_operation: colrev.ops.prescreen.Prescreen, records: dict
-    ) -> None:
+    def __import_from_asreview(self, records: dict) -> None:
         def get_last_modified(input_paths: list[str]) -> Path:
             latest_file = max(input_paths, key=os.path.getmtime)
             return Path(latest_file)
@@ -181,12 +180,12 @@ class ASReviewPrescreen(JsonSchemaMixin):
             for _, row in to_import.iterrows():
                 prescreen_record = colrev.record.Record(data=records[row["ID"]])
                 if str(row["included"]) == "1":
-                    prescreen_operation.prescreen(
+                    self.prescreen_operation.prescreen(
                         record=prescreen_record,
                         prescreen_inclusion=True,
                     )
                 elif str(row["included"]) == "0":
-                    prescreen_operation.prescreen(
+                    self.prescreen_operation.prescreen(
                         record=prescreen_record,
                         prescreen_inclusion=False,
                     )
@@ -196,14 +195,13 @@ class ASReviewPrescreen(JsonSchemaMixin):
         # gh_issue https://github.com/CoLRev-Environment/colrev/issues/74
         # add version
 
-        prescreen_operation.review_manager.create_commit(
+        self.review_manager.create_commit(
             msg="Pre-screening (manual, with asreview)",
             manual_author=True,
         )
 
     def run_prescreen(
         self,
-        prescreen_operation: colrev.ops.prescreen.Prescreen,
         records: dict,
         split: list,
     ) -> dict:
@@ -214,7 +212,7 @@ class ASReviewPrescreen(JsonSchemaMixin):
         endpoint_path_empty = not any(Path(self.endpoint_path).iterdir())
 
         # Note : we always update/overwrite the to_screen csv
-        self.__export_for_asreview(prescreen_operation, records, split)
+        self.__export_for_asreview(records, split)
 
         if endpoint_path_empty:
             start_screen_selected = True
@@ -248,11 +246,11 @@ class ASReviewPrescreen(JsonSchemaMixin):
                 print("\n\n\nCompleted prescreen. ")
 
         if input("Import prescreen from asreview [y,n]?") == "y":
-            self.__import_from_asreview(prescreen_operation, records)
+            self.__import_from_asreview(records)
 
-            if prescreen_operation.review_manager.dataset.has_changes():
+            if self.review_manager.dataset.has_changes():
                 if input("create commit [y,n]?") == "y":
-                    prescreen_operation.review_manager.create_commit(
+                    self.review_manager.create_commit(
                         msg="Pre-screen (asreview)",
                         manual_author=True,
                     )
